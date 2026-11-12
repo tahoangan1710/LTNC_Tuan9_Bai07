@@ -1,2 +1,9 @@
-bank_system\CheckingAccountTest.class
+bank_system\BankExceptionTest.class
+bank_system\CustomerTest.class
 bank_system\FilePathTest.class
+bank_system\AccountTest.class
+bank_system\CheckingAccountTest.class
+bank_system\SavingsAccountTest.class
+bank_system\AccountTest$TestAccount.class
+bank_system\TransactionTest.class
+bank_system\BankTest.class
