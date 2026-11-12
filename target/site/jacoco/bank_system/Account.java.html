@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bank-system</a> &gt; <a href="index.source.html" class="el_package">bank_system</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package bank_system;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Lớp trừu tượng đại diện cho một tài khoản ngân hàng.
+ */
+public abstract class Account {
+<span class="fc" id="L13">    private static final Logger LOGGER = LoggerFactory.getLogger(Account.class);</span>
+
+    public static final String CHECKING_TYPE = &quot;CHECKING&quot;;
+    public static final String SAVINGS_TYPE = &quot;SAVINGS&quot;;
+
+    private long accountNumber;
+    private double balance;
+    private List&lt;bank_system.Transaction&gt; transactionList;
+
+    /**
+     * Khởi tạo tài khoản.
+     *
+     * @param accountNumber số tài khoản
+     * @param balance số dư ban đầu
+     */
+<span class="fc" id="L28">    public Account(long accountNumber, double balance) {</span>
+<span class="fc" id="L29">        this.accountNumber = accountNumber;</span>
+<span class="fc" id="L30">        this.balance = balance;</span>
+<span class="fc" id="L31">        this.transactionList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * @return số tài khoản
+     */
+    public long getAccountNumber() {
+<span class="fc" id="L38">        return accountNumber;</span>
+    }
+
+    /**
+     * @param accountNumber số tài khoản mới
+     */
+    public void setAccountNumber(long accountNumber) {
+<span class="nc" id="L45">        this.accountNumber = accountNumber;</span>
+<span class="nc" id="L46">    }</span>
+
+    /**
+     * @return số dư hiện tại
+     */
+    public double getBalance() {
+<span class="fc" id="L52">        return balance;</span>
+    }
+
+    /**
+     * @param balance số dư mới
+     */
+    protected void setBalance(double balance) {
+<span class="nc" id="L59">        this.balance = balance;</span>
+<span class="nc" id="L60">    }</span>
+
+    /**
+     * @return danh sách giao dịch
+     */
+    public List&lt;bank_system.Transaction&gt; getTransactionList() {
+<span class="nc" id="L66">        return transactionList;</span>
+    }
+
+    /**
+     * Cập nhật danh sách giao dịch.
+     *
+     * @param transactionList danh sách giao dịch mới
+     */
+    public void setTransactionList(List&lt;bank_system.Transaction&gt; transactionList) {
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (transactionList == null) {</span>
+<span class="nc" id="L76">            this.transactionList = new ArrayList&lt;&gt;();</span>
+        } else {
+<span class="nc" id="L78">            this.transactionList = transactionList;</span>
+        }
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Nạp tiền vào tài khoản.
+     *
+     * @param amount số tiền cần nạp
+     */
+    public abstract void deposit(double amount);
+
+    /**
+     * Rút tiền khỏi tài khoản.
+     *
+     * @param amount số tiền cần rút
+     */
+    public abstract void withdraw(double amount);
+
+    /**
+     * Thực hiện phần cập nhật số dư khi nạp tiền.
+     *
+     * @param amount số tiền cần nạp
+     * @throws bank_system.InvalidFundingAmountException nếu số tiền không hợp lệ
+     */
+    protected void doDepositing(double amount) throws bank_system.InvalidFundingAmountException {
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">        if (amount &lt;= 0) {</span>
+<span class="nc" id="L104">            throw new bank_system.InvalidFundingAmountException(amount);</span>
+        }
+<span class="fc" id="L106">        balance += amount;</span>
+<span class="fc" id="L107">        LOGGER.debug(&quot;Đã cập nhật số dư sau khi nạp: accountNumber={}&quot;, accountNumber);</span>
+<span class="fc" id="L108">    }</span>
+
+    /**
+     * Thực hiện phần cập nhật số dư khi rút tiền.
+     *
+     * @param amount số tiền cần rút
+     * @throws bank_system.BankException nếu số tiền không hợp lệ hoặc số dư không đủ
+     */
+    protected void doWithdrawing(double amount) throws bank_system.BankException {
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">        if (amount &lt;= 0) {</span>
+<span class="nc" id="L118">            throw new bank_system.InvalidFundingAmountException(amount);</span>
+        }
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        if (amount &gt; balance) {</span>
+<span class="nc" id="L121">            throw new bank_system.InsufficientFundsException(amount);</span>
+        }
+<span class="fc" id="L123">        balance -= amount;</span>
+<span class="fc" id="L124">        LOGGER.debug(&quot;Đã cập nhật số dư sau khi rút: accountNumber={}&quot;, accountNumber);</span>
+<span class="fc" id="L125">    }</span>
+
+    /**
+     * Thêm giao dịch vào lịch sử tài khoản.
+     *
+     * @param transaction giao dịch cần thêm
+     */
+    public void addTransaction(bank_system.Transaction transaction) {
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        if (transaction != null) {</span>
+<span class="fc" id="L134">            transactionList.add(transaction);</span>
+        }
+<span class="fc" id="L136">    }</span>
+
+    /**
+     * Lấy lịch sử giao dịch của tài khoản.
+     *
+     * @return lịch sử giao dịch dạng văn bản
+     */
+    public String getTransactionHistory() {
+<span class="nc" id="L144">        StringBuilder history = new StringBuilder();</span>
+<span class="nc" id="L145">        history.append(&quot;Lịch sử giao dịch của tài khoản &quot;)</span>
+<span class="nc" id="L146">                .append(accountNumber).append(&quot;:\n&quot;);</span>
+
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        for (int index = 0; index &lt; transactionList.size(); index++) {</span>
+<span class="nc" id="L149">            history.append(transactionList.get(index).getTransactionSummary());</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">            if (index &lt; transactionList.size() - 1) {</span>
+<span class="nc" id="L151">                history.append('\n');</span>
+            }
+        }
+
+<span class="nc" id="L155">        LOGGER.info(&quot;Đã truy xuất lịch sử giao dịch: accountNumber={}, transactionCount={}&quot;,</span>
+<span class="nc" id="L156">                accountNumber, transactionList.size());</span>
+<span class="nc" id="L157">        return history.toString();</span>
+    }
+
+    /**
+     * So sánh tài khoản theo số tài khoản.
+     *
+     * @param object đối tượng cần so sánh
+     * @return true nếu hai tài khoản có cùng số tài khoản
+     */
+    @Override
+    public boolean equals(Object object) {
+<span class="nc bnc" id="L168" title="All 2 branches missed.">        if (this == object) {</span>
+<span class="nc" id="L169">            return true;</span>
+        }
+<span class="nc bnc" id="L171" title="All 2 branches missed.">        if (!(object instanceof Account)) {</span>
+<span class="nc" id="L172">            return false;</span>
+        }
+<span class="nc" id="L174">        Account other = (Account) object;</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        return accountNumber == other.accountNumber;</span>
+    }
+
+    /**
+     * Tạo mã băm dựa trên số tài khoản.
+     *
+     * @return mã băm của tài khoản
+     */
+    @Override
+    public int hashCode() {
+<span class="nc" id="L185">        return (int) (accountNumber ^ (accountNumber &gt;&gt;&gt; 32));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

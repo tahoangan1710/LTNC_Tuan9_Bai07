@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+bank-system,bank_system,Bank,296,0,28,0,80,0,22,0,8,0
+bank-system,bank_system,InvalidFundingAmountException,14,0,0,0,2,0,1,0,1,0
+bank-system,bank_system,Customer,77,0,8,0,28,0,15,0,11,0
+bank-system,bank_system,CheckingAccount,44,95,0,0,6,21,0,4,0,4
+bank-system,bank_system,Transaction,90,19,5,0,23,7,14,2,10,2
+bank-system,bank_system,FilePathHelper,3,9,0,0,1,1,1,1,1,1
+bank-system,bank_system,BankException,4,0,0,0,2,0,1,0,1,0
+bank-system,bank_system,SavingsAccount,159,0,4,0,31,0,6,0,4,0
+bank-system,bank_system,Account,125,71,16,4,29,20,17,7,7,7
+bank-system,bank_system,InsufficientFundsException,14,0,0,0,2,0,1,0,1,0
