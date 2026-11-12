@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="bank_system.BankTest" time="0.122" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="bank_system.BankTest" time="0.139" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25.0.4.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\ADMIN\AppData\Local\Temp\surefire12184025817464509485\surefirebooter-20261112133703157_3.jar C:\Users\ADMIN\AppData\Local\Temp\surefire12184025817464509485 2026-11-12T13-37-03_058-jvmRun1 surefire-20261112133703157_1tmp surefire_0-20261112133703157_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\ADMIN\AppData\Local\Temp\surefire13084530058435842814\surefirebooter-20261112134436791_3.jar C:\Users\ADMIN\AppData\Local\Temp\surefire13084530058435842814 2026-11-12T13-44-36_684-jvmRun1 surefire-20261112134436791_1tmp surefire_0-20261112134436791_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\LTNC\TaHoangAn_24021354_Week9\Bai07\target\test-classes;C:\LTNC\TaHoangAn_24021354_Week9\Bai07\target\classes;C:\Users\ADMIN\.m2\repository\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar;C:\Users\ADMIN\.m2\repository\ch\qos\logback\logback-classic\1.4.11\logback-classic-1.4.11.jar;C:\Users\ADMIN\.m2\repository\ch\qos\logback\logback-core\1.4.11\logback-core-1.4.11.jar;C:\Users\ADMIN\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\ADMIN\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ADMIN\AppData\Local\Temp\surefire12184025817464509485\surefirebooter-20261112133703157_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ADMIN\AppData\Local\Temp\surefire13084530058435842814\surefirebooter-20261112134436791_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.4.1+1-LTS-5"/>
@@ -59,14 +59,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testReadCustomerList" classname="bank_system.BankTest" time="0.118">
-    <system-out><![CDATA[13:37:04 WARN  bank_system.Bank - Không thể đọc danh sách khách hàng: inputStream là null
-13:37:04 INFO  bank_system.Bank - Bắt đầu đọc danh sách khách hàng
-13:37:04 WARN  bank_system.Bank - Bỏ qua dòng tài khoản vì chưa có khách hàng: orphan line
-13:37:04 INFO  bank_system.Bank - Đã thêm khách hàng: customerId=123456789
-13:37:04 WARN  bank_system.Bank - Dòng tài khoản không đủ dữ liệu: bad line
-13:37:04 WARN  bank_system.Bank - Loại tài khoản không được hỗ trợ: UNKNOWN
-13:37:04 WARN  bank_system.Bank - Dữ liệu số tài khoản không hợp lệ: abc CHECKING 100
+  <testcase name="testReadCustomerList" classname="bank_system.BankTest" time="0.136">
+    <system-out><![CDATA[13:44:38 WARN  bank_system.Bank - Không thể đọc danh sách khách hàng: inputStream là null
+13:44:38 INFO  bank_system.Bank - Bắt đầu đọc danh sách khách hàng
+13:44:38 WARN  bank_system.Bank - Bỏ qua dòng tài khoản vì chưa có khách hàng: orphan line
+13:44:38 INFO  bank_system.Bank - Đã thêm khách hàng: customerId=123456789
+13:44:38 WARN  bank_system.Bank - Dòng tài khoản không đủ dữ liệu: bad line
+13:44:38 WARN  bank_system.Bank - Loại tài khoản không được hỗ trợ: UNKNOWN
+13:44:38 WARN  bank_system.Bank - Dữ liệu số tài khoản không hợp lệ: abc CHECKING 100
 java.lang.NumberFormatException: For input string: "abc"
 	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
 	at java.base/java.lang.Long.parseLong(Long.java:594)
@@ -100,8 +100,8 @@ java.lang.NumberFormatException: For input string: "abc"
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-13:37:04 INFO  bank_system.Bank - Đã thêm khách hàng: customerId=987654321
-13:37:04 INFO  bank_system.Bank - Hoàn tất đọc danh sách khách hàng: customerCount=2
+13:44:38 INFO  bank_system.Bank - Đã thêm khách hàng: customerId=987654321
+13:44:38 INFO  bank_system.Bank - Hoàn tất đọc danh sách khách hàng: customerCount=2
 ]]></system-out>
   </testcase>
   <testcase name="testSetAndSortCustomers" classname="bank_system.BankTest" time="0.0"/>
